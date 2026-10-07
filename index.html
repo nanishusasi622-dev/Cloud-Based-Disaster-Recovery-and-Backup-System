@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudGuard DR | Backup & Recovery</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">☁</div>
+      <div>
+        <h1>CloudGuard DR</h1>
+        <p>Cloud-Based Disaster Recovery & Backup System</p>
+      </div>
+    </div>
+    <div class="status"><span class="dot"></span> Cloud Service Online</div>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+    <button class="nav-btn" data-section="backups">Backups</button>
+    <button class="nav-btn" data-section="recovery">Disaster Recovery</button>
+    <button class="nav-btn" data-section="logs">Activity Logs</button>
+  </nav>
+
+  <main>
+    <section id="dashboard" class="section active">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">CLOUD PROTECTION</span>
+          <h2>Protect data. Recover fast.</h2>
+          <p>Manage backups and simulate disaster recovery from one simple dashboard.</p>
+        </div>
+        <button class="primary" id="quickBackup">＋ Create Backup</button>
+      </div>
+
+      <div class="cards">
+        <div class="card stat"><span>Total Backups</span><strong id="backupCount">0</strong><small>Recovery points</small></div>
+        <div class="card stat"><span>Cloud Storage</span><strong id="storageUsed">0 MB</strong><small>Simulated cloud usage</small></div>
+        <div class="card stat"><span>Last Backup</span><strong id="lastBackup">—</strong><small>Latest protection point</small></div>
+        <div class="card stat"><span>System Health</span><strong class="healthy">Healthy</strong><small>Monitoring active</small></div>
+      </div>
+
+      <div class="grid-two">
+        <div class="card">
+          <div class="card-head"><h3>Protection Overview</h3><span class="badge">Active</span></div>
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Backup readiness</span><b id="readiness">85%</b></div>
+            <div class="progress"><div id="readinessBar" style="width:85%"></div></div>
+          </div>
+          <ul class="check-list">
+            <li>✓ Automated backup schedule configured</li>
+            <li>✓ Recovery points available</li>
+            <li>✓ Disaster recovery workflow ready</li>
+            <li>✓ Activity monitoring enabled</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>Recovery Objectives</h3></div>
+          <div class="objective"><span>RPO</span><b>24 hours</b><small>Maximum acceptable data loss</small></div>
+          <div class="objective"><span>RTO</span><b>1 hour</b><small>Target recovery time</small></div>
+          <div class="objective"><span>Strategy</span><b>Backup + Restore</b><small>Cloud recovery model</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="backups" class="section">
+      <div class="section-title">
+        <div><span class="eyebrow">DATA PROTECTION</span><h2>Backup Management</h2></div>
+        <button class="primary" id="createBackup">＋ Create Backup</button>
+      </div>
+      <div class="card table-card">
+        <div class="table-top"><h3>Recovery Points</h3><span id="backupMessage"></span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Backup ID</th><th>Date & Time</th><th>Data</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="backupTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="recovery" class="section">
+      <div class="section-title">
+        <div><span class="eyebrow">BUSINESS CONTINUITY</span><h2>Disaster Recovery Center</h2></div>
+      </div>
+      <div class="recovery-grid">
+        <div class="card">
+          <h3>Simulate a Disaster</h3>
+          <p class="muted">Run a safe simulation of a system failure and recover the application using the latest recovery point.</p>
+          <div class="scenario">
+            <label>Disaster scenario</label>
+            <select id="scenario">
+              <option>Primary server failure</option>
+              <option>Database corruption</option>
+              <option>Ransomware incident</option>
+              <option>Data center outage</option>
+            </select>
+          </div>
+          <button class="danger" id="simulate">⚠ Simulate Disaster</button>
+          <div id="recoveryProgress" class="hidden">
+            <div class="recovery-step" id="step1">1. Detecting incident...</div>
+            <div class="recovery-step" id="step2">2. Selecting recovery point...</div>
+            <div class="recovery-step" id="step3">3. Restoring protected data...</div>
+            <div class="recovery-step" id="step4">4. Verifying system...</div>
+          </div>
+          <div id="recoveryResult" class="result hidden"></div>
+        </div>
+
+        <div class="card">
+          <h3>Recovery Architecture</h3>
+          <div class="architecture">
+            <div class="arch-node">💻<b>Primary System</b><small>Application & data</small></div>
+            <div class="arrow">→</div>
+            <div class="arch-node">☁️<b>Cloud Backup</b><small>Recovery points</small></div>
+            <div class="arrow">→</div>
+            <div class="arch-node">🛡️<b>Recovery Site</b><small>Restore service</small></div>
+          </div>
+          <div class="info-box"><b>Recovery flow:</b> Detect → Isolate → Select backup → Restore → Verify → Resume service</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="logs" class="section">
+      <div class="section-title">
+        <div><span class="eyebrow">AUDIT TRAIL</span><h2>Activity Logs</h2></div>
+        <button class="secondary" id="clearLogs">Clear Logs</button>
+      </div>
+      <div class="card">
+        <div id="logsList" class="logs"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>CloudGuard DR • Academic Cloud Computing Project • Backup and recovery workflow simulation</footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>
